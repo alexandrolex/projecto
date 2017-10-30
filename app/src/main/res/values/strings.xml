@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">GeoFragment</string>
+    <string name="true_button">True</string>
+    <string name="false_button">False</string>
+    <string name="anterior_button">Anterior</string>
+    <string name="siguiente_button">Siguiente</string>
+    <string name="puntuacion">Puntos:</string>
+    <string name="pistas">Pistas:</string>
+
+    <string name="question_1">El sergi es el mejor del mundo?</string>
+    <string name="question_2">La sagrada familia esta en barcelona?</string>
+    <string name="question_3">El carlos vuela?</string>
+    <string name="question_4">Aprobara el Victor?</string>
+    <string name="question_5">Las clases molan?</string>
+    <string name="title_activity_pistas">Pistas</string>
+
+    <string name="pista1">El sergi es un gran profe y todos lo aprecian</string>
+    <string name="pista2">Realmente es cierta pero soy muy tramposo</string>
+    <string name="pista3">El carlos desde pequeño es como Icaro </string>
+    <string name="pista4">Seguramente el Victor consiga hacer muchas cosas</string>
+    <string name="pista5">Las clases no siempre gustan a todos</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

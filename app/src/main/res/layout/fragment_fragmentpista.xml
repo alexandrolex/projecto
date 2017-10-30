@@ -1,0 +1,36 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    tools:context=".Pista">
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="66dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginRight="37dp"
+        android:text="Button" />
+
+    <TextView
+        android:id="@+id/pista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="133dp"
+        android:text="@string/pista1"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/imagenes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/profesor"
+        android:layout_centerVertical="true" />
+</RelativeLayout>
