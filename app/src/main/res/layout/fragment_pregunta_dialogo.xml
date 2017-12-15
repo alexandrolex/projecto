@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.alejandrosalguero.geofragment.PreguntaDialogo">
+
+
+    <TextView
+        android:id="@+id/explicacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:text="Escribe la nueva pregunta:"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/pregdialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        android:layout_below="@+id/explicacion"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp" />
+
+    <CheckBox
+        android:id="@+id/Respuesta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/pregdialog"
+        android:layout_toRightOf="@+id/explicacion2"
+        android:layout_toEndOf="@+id/explicacion2"
+        android:layout_marginLeft="26dp"
+        android:layout_marginStart="26dp" />
+
+    <TextView
+        android:id="@+id/explicacion2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Marca la casilla Si es verdadero"
+        android:layout_alignTop="@+id/Respuesta"
+        android:layout_alignLeft="@+id/pregdialog"
+        android:layout_alignStart="@+id/pregdialog" />
+
+</RelativeLayout>

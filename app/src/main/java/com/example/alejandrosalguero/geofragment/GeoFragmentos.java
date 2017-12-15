@@ -1,6 +1,7 @@
 package com.example.alejandrosalguero.geofragment;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static android.R.attr.category;
 import static android.app.Activity.RESULT_OK;
 
 
@@ -27,8 +32,8 @@ public class GeoFragmentos extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private static int mParam1 ;
+
 
 
     public GeoFragmentos() {
@@ -44,11 +49,11 @@ public class GeoFragmentos extends Fragment {
      * @return A new instance of fragment GeoFragmentos.
      */
     // TODO: Rename and change types and number of parameters
-    public static GeoFragmentos newInstance(String param1, String param2) {
+    public static GeoFragmentos newInstance(int param1) {
         GeoFragmentos fragment = new GeoFragmentos();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(ARG_PARAM1, param1);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -57,9 +62,7 @@ public class GeoFragmentos extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+            mParam1 = getArguments().getInt(ARG_PARAM1);        }
     }
 
     int n = 0;
@@ -67,7 +70,10 @@ public class GeoFragmentos extends Fragment {
     int actualizar = 0;
     private TextView mQuestionTextView;
 
+    List<Question> mtuquestion ;
+    List<Partida> partidas ;
 
+/*
     public Question[] TuQuestion = {
             new Question(R.string.question_1, true, R.mipmap.profesor),
             new Question(R.string.question_2, false, R.mipmap.sagrada),
@@ -76,7 +82,8 @@ public class GeoFragmentos extends Fragment {
             new Question(R.string.question_5, false, R.mipmap.clase),
 
 
-    };
+    };*/
+
     private TextView punt;
 
     @Override
@@ -91,7 +98,7 @@ public class GeoFragmentos extends Fragment {
         } else {
 
         }
-
+        mtuquestion=SinglestonPregunta.get(getContext()).getMtuquestion(getContext());
 
         ImageButton boton1 = (ImageButton) v.findViewById(R.id.button);
         ImageButton boton2 = (ImageButton) v.findViewById(R.id.button2);
@@ -99,11 +106,11 @@ public class GeoFragmentos extends Fragment {
         Button boton5 = (Button) v.findViewById(R.id.button5);
 
         punt = (TextView) v.findViewById(R.id.puntuacion);
-
-        mQuestionTextView = (TextView) v.findViewById(R.id.question);
-
+        partidas =SinglestonPartida.get(getContext()).getMtuquestion(getContext()) ;
+                mQuestionTextView = (TextView) v.findViewById(R.id.question);
 
         updateQuestion();
+
         boton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -154,11 +161,12 @@ public class GeoFragmentos extends Fragment {
 
                 updateQuestion();
 
-                int question = TuQuestion[actualizar].getPista();
+                Geofrag verpista = (Geofrag)getActivity();
 
-                Intent Pistas = new Intent(getActivity(), Geofrag.class);
-                Pistas.putExtra("milista", question);
-                startActivityForResult(Pistas, PICK_REQUEST);
+               verpista.dialogo(mtuquestion.get(actualizar).getPista());
+
+
+
             }
         });
         boton5.setOnClickListener(new View.OnClickListener() {
@@ -178,16 +186,28 @@ public class GeoFragmentos extends Fragment {
     private void comprobar(boolean pulsado) {
 
 
+
         //mQuestionTextView.setText(mQuestionTextView.getText()+""+TuQuestion[m].getNumero());
 
-        if (TuQuestion[actualizar].isRespuesta() == pulsado) {
+        if (mtuquestion.get(actualizar).isRespuesta() == pulsado) {
             n = n + 1;
-            punt.setText("" + n);
 
-            Toast.makeText(getActivity(), "has acertado", Toast.LENGTH_SHORT).show();
+                partidas.get(partidas.size()-1).setPuntos(n);      punt.setText("" + n);
+
+
+
+
+                Toast.makeText(getActivity(), "has acertado", Toast.LENGTH_SHORT).show();
         } else {
             n = n - 1;
-            punt.setText("" + n);
+
+
+
+                partidas.get(partidas.size()-1).setPuntos(n);
+
+                punt.setText("" + n);
+
+
 
             Toast.makeText(getActivity(), "Has fallado", Toast.LENGTH_SHORT).show();
         }
@@ -196,9 +216,20 @@ public class GeoFragmentos extends Fragment {
     }
 
     private void updateQuestion() {
-        actualizar = (actualizar) % TuQuestion.length;
-        int question = TuQuestion[actualizar].getNumero();
-        mQuestionTextView.setText(question);
+        mtuquestion=SinglestonPregunta.get(getContext()).getMtuquestion(getContext());
+        Geofrag verpista = (Geofrag)getActivity();
+int param=0;
+
+        if(actualizar==mtuquestion.size()){
+            actualizar=actualizar-1; verpista.dialogo2(param);
+
+        }else{
+        String question = mtuquestion.get(actualizar).getNombre();
+
+
+        mQuestionTextView.setText(question);}
+       // mQuestionTextView.setText(question2);
+
     }
 
     @Override

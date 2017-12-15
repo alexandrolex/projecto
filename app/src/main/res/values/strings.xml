@@ -6,6 +6,8 @@
     <string name="siguiente_button">Siguiente</string>
     <string name="puntuacion">Puntos:</string>
     <string name="pistas">Pistas:</string>
+    <string name="cambio">1</string>
+    <string name="cambio2">2</string>
 
     <string name="question_1">El sergi es el mejor del mundo?</string>
     <string name="question_2">La sagrada familia esta en barcelona?</string>
@@ -21,6 +23,44 @@
     <string name="pista5">Las clases no siempre gustan a todos</string>
 
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="alert_dialog_ok">Si</string>
+    <string name="alert_dialog_cancel">No</string>
+    <string name="alert_dialog_two_buttons_title">Dialogo</string>
+
+    <!-- Pregunta1 -->
+    <string name="multivalor1">Si</string>
+    <string name="multivalor2">No</string>
+    <string name="multivalor3">No tienes ni idea</string>
+    <string name="multivalor4">es el peor</string>
+    <!-- Pregunta2 -->
+    <string name="multivalor11">Si</string>
+    <string name="multivalor21">No</string>
+    <string name="multivalor31">Esta pero no</string>
+    <string name="multivalor41">Es una broma</string>
+    <!-- Pregunta3 -->
+    <string name="multivalor12">Si</string>
+    <string name="multivalor22">No</string>
+    <string name="multivalor32">Vuela mucho pero no</string>
+    <string name="multivalor42">Volo hacia el sol</string>
+    <!-- Pregunta4 -->
+    <string name="multivalor13">Si</string>
+    <string name="multivalor23">No</string>
+    <string name="multivalor33">haciendo orales</string>
+    <string name="multivalor43">Pero como va a aprobar</string>
+    <!-- Pregunta5 -->
+    <string name="multivalor14">Si</string>
+    <string name="multivalor24">No</string>
+    <string name="multivalor34">Nunca a molado</string>
+    <string name="multivalor44">Es lo peor</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_ventana">Ventana</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
 
 </resources>

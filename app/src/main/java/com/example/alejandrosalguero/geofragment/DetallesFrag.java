@@ -1,27 +1,28 @@
 package com.example.alejandrosalguero.geofragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.example.alejandrosalguero.geofragment.R;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link fragmentpista.OnFragmentInteractionListener} interface
+ * {@link DetallesFrag.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link fragmentpista#newInstance} factory method to
+ * Use the {@link DetallesFrag#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class fragmentpista extends Fragment {
+public class DetallesFrag extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -31,7 +32,7 @@ public class fragmentpista extends Fragment {
     private int mParam1;
 
 
-    public fragmentpista() {
+    public DetallesFrag() {
         // Required empty public constructor
     }
 
@@ -41,11 +42,11 @@ public class fragmentpista extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment fragmentpista.
+     * @return A new instance of fragment DetallesFrag.
      */
     // TODO: Rename and change types and number of parameters
-    public static fragmentpista newInstance(int param1) {
-        fragmentpista fragment = new fragmentpista();
+    public static DetallesFrag newInstance(int param1) {
+        DetallesFrag fragment = new DetallesFrag();
         Bundle args = new Bundle();
         args.putInt(ARG_PARAM1, param1);
         fragment.setArguments(args);
@@ -57,44 +58,33 @@ public class fragmentpista extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getInt(ARG_PARAM1);
-
         }
     }
-
+    List<Partida> partidas ;
+    TextView detall1,detall2;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_fragmentpista, container, false);
+        // Inflate the layout for this fragment
+        View v= inflater.inflate(R.layout.fragment_detalles, container, false);
+        partidas =SinglestonPartida.get(getContext()).getMtuquestion(getContext()) ;
 
+        Collections.sort(partidas, new Comparator<Partida>() {
+            @Override
+            public int compare(Partida partida, Partida t1) {
 
-        Button boton4 = (Button) v.findViewById(R.id.button4);
+                return new Integer(t1.getPuntos()).compareTo(new Integer(partida.getPuntos()));
 
-        ImageView imagen =(ImageView) v.findViewById(R.id.imagenes);
-
-
-        //pista.setText(s);
-        imagen.setImageResource(mParam1);
-
+            }
+        });
+        detall1 = (TextView) v.findViewById(R.id.detall1);
+        detall2 = (TextView) v.findViewById(R.id.detall2);
+        detall1.setText(partidas.get(mParam1).getJugador());
+        detall2.setText(""+partidas.get(mParam1).getPuntos());
 
         return v;
-
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-
-
-
-
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
 
 }
